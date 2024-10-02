@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import Link from 'next/link'
 import { usePathname } from 'next/navigation';
+import Footer from './Footer';
 
 const Sidebar = ({user}: SidebarProps) => {
   const pathname = usePathname();
@@ -21,16 +22,16 @@ const Sidebar = ({user}: SidebarProps) => {
             width={34}
             height={34}
             alt="Grow logo"
-            className="size=[24px] max-xl:size-14"
+            className="size-[24px] max-xl:size-14"
           />
-          <h1 className="sidebar-logo">Grow </h1>
+          <h1 className="sidebar-logo">Grow</h1>
         </Link>
 
         {sidebarLinks.map((item) => {
           const isActive = pathname === item.route || pathname.startsWith(`${item.route}/`);
           return (
             <Link
-            href={item.route}
+              href={item.route}
               key={item.label}
               className={cn
                 ('sidebar-link', {'bg-bank-gradient':isActive}) }
@@ -53,7 +54,8 @@ const Sidebar = ({user}: SidebarProps) => {
         })}
         USER
       </nav>
-      FOOTER
+      
+      <Footer user={user} />
     </section>
   )
 };
