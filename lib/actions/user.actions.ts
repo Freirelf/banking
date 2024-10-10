@@ -139,7 +139,7 @@ export const createLinkToken = async (user: User) => {
         client_user_id: user.$id
       },
       client_name: `${user.firstName} ${user.lastName}`,
-      products: ['auth'] as Products[],
+      products: ['auth', 'transactions'] as Products[],
       language: 'en',
       country_codes: ['US'] as CountryCode[],
     }
@@ -148,7 +148,7 @@ export const createLinkToken = async (user: User) => {
     
     return parseStringify({linkToken: response.data.link_token});
   } catch (error) {
-    console.log('Erro no createLinkToken:', error);
+    console.log('Erro createLinkToken:', error);
   }
 }
 

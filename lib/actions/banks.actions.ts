@@ -92,20 +92,41 @@ export const getAccount = async ({ appwriteItemId }: getAccountProps) => {
     //   })
     // );
 
-    // // get institution info from plaid
-    // const institution = await getInstitution({
-    //   institutionId: accountsResponse.data.item.institution_id!,
-    // });
+    const transferTransactions = [
+      {
+        id: "1",
+        name: "Transfer",
+        amount: 100,
+        date: "2022-01-01",
+        paymentChannel: "ACH",
+        category: "Transfer",
+        type: "debit",
+      },
+      {
+        id: "2",
+        name: "Transfer",
+        amount: 100,
+        date: "2022-01-01",
+        paymentChannel: "ACH",
+        category: "Transfer",
+        type: "credit",
+      },
+    ];
 
-    // const transactions = await getTransactions({
-    //   accessToken: bank?.accessToken,
-    // });
+    // get institution info from plaid
+    const institution = await getInstitution({
+      institutionId: accountsResponse.data.item.institution_id!,
+    });
+
+    const transactions = await getTransactions({
+      accessToken: bank?.accessToken,
+    });
 
     const account = {
       id: accountData.account_id,
       availableBalance: accountData.balances.available!,
       currentBalance: accountData.balances.current!,
-      // institutionId: institution.institution_id,
+      institutionId: institution.institution_id,
       name: accountData.name,
       officialName: accountData.official_name,
       mask: accountData.mask!,
@@ -114,14 +135,14 @@ export const getAccount = async ({ appwriteItemId }: getAccountProps) => {
       appwriteItemId: bank.$id,
     };
 
-    // // sort transactions by date such that the most recent transaction is first
-    //   const allTransactions = [...transactions, ...transferTransactions].sort(
-    //   (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-    // );
+    // sort transactions by date such that the most recent transaction is first
+      const allTransactions = [...transactions, ...transferTransactions].sort(
+      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+    );
 
     return parseStringify({
       data: account,
-      // transactions: allTransactions,
+      transactions: allTransactions,
     });
   } catch (error) {
     console.error("An error occurred while getting the account:", error);
