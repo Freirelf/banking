@@ -4,7 +4,6 @@ import { getLoggedInUser } from "@/lib/actions/user.actions";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 
-
 export default async function RootLayout({
   children,
 }: Readonly<{
@@ -27,7 +26,6 @@ export default async function RootLayout({
               height={30}
               alt="logo"
             />
-
             <div>
               <MobileNav user={loggedIn} />
             </div>

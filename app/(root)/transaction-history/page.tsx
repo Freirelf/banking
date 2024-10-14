@@ -35,7 +35,7 @@ const TransactionHistory = async({searchParams: {id, page}}: SearchParamProps) =
       <div className="transactions-header ">
         <HeaderBox 
           title='Histórico de Transações'
-          subtext='Acesse e gerencie  suas contas e transações com eficiência.'
+          subtext='Veja seus dados bancários e transações.'
         />
       </div>
 

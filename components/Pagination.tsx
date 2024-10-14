@@ -10,8 +10,8 @@ export const Pagination = ({ page, totalPages }: PaginationProps) => {
   const router = useRouter();
   const searchParams = useSearchParams()!;
 
-  const handleNavigation = (type: "prev" | "next") => {
-    const pageNumber = type === "prev" ? page - 1 : page + 1;
+  const handleNavigation = (type: "anterior" | "próxima") => {
+    const pageNumber = type === "anterior" ? page - 1 : page + 1;
 
     const newUrl = formUrlQuery({
       params: searchParams.toString(),
@@ -28,7 +28,7 @@ export const Pagination = ({ page, totalPages }: PaginationProps) => {
         size="lg"
         variant="ghost"
         className="p-0 hover:bg-transparent"
-        onClick={() => handleNavigation("prev")}
+        onClick={() => handleNavigation("anterior")}
         disabled={Number(page) <= 1}
       >
         <Image
@@ -38,7 +38,7 @@ export const Pagination = ({ page, totalPages }: PaginationProps) => {
           height={20}
           className="mr-2"
         />
-        Prev
+        Anterior
       </Button>
       <p className="text-14 flex items-center px-2">
         {page} / {totalPages}
@@ -47,10 +47,10 @@ export const Pagination = ({ page, totalPages }: PaginationProps) => {
         size="lg"
         variant="ghost"
         className="p-0 hover:bg-transparent"
-        onClick={() => handleNavigation("next")}
+        onClick={() => handleNavigation("próxima")}
         disabled={Number(page) >= totalPages}
       >
-        Next
+        Próxima
         <Image
           src="/icons/arrow-left.svg"
           alt="arrow"

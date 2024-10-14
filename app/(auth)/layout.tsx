@@ -17,7 +17,6 @@ export default function RootLayout({
             height={500}
           />
         </div>
- 
       </div>
     </main>
   );

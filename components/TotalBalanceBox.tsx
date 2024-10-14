@@ -14,7 +14,7 @@ const TotalBalanceBox = ({accounts = [], totalBanks, totalCurrentBalance}: Total
         </h2>
         <div className='flex flex-col gap-2'>
           <p className='total-balance-label'>
-           Saldo Corrente Total
+           Total do Saldo Corrente
           </p>
 
           <div className='total-balance-amount flex-center gap-2'>
